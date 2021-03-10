@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CustomerService implements ICustomerService {
     @Autowired
@@ -41,5 +43,10 @@ public class CustomerService implements ICustomerService {
     @Override
     public Page<Customer> getByProvince(Province province, Pageable pageable) {
         return customerRepository.getCustomersByProvince(province, pageable);
+    }
+
+    @Override
+    public Page<Customer> getByName(Optional<String> name, Pageable pageable) {
+        return customerRepository.getCustomersByNameContains(name, pageable);
     }
 }

@@ -12,6 +12,12 @@
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
+<form action="/customer/all" method="get">
+    <label>Search by name:
+        <input type="text" name="name">
+    </label>
+    <input type="submit" value="Search">
+</form>
 <table>
     <tr>
         <th>ID</th>
@@ -25,9 +31,9 @@
     </tr>
 </table>
 <div>
-    <a th:href="@{'/customer'(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}">Previous</a>
+    <a th:href="@{'/customer/all'(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}">Previous</a>
     <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
-    <a th:href="@{'/customer'(page=${customers.number + 1})}" th:if="${customers.hasNext()}">Next</a>
+    <a th:href="@{'/customer/all'(page=${customers.number + 1})}" th:if="${customers.hasNext()}">Next</a>
 </div>
 </body>
 </html>
